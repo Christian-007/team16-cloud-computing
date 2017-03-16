@@ -1,0 +1,86 @@
+/* General Styling */
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #fafafa;
+}
+
+/* Navbar Styling */
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover {
+	color: #ff5252;
+}
+
+}
+
+nav .navbar-collapse {
+	font-weight: 500;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	color: #ff5252;
+}
+
+/* Home Styling */
+#home .white-content {
+	background-color: #fff;
+	padding: 20px;
+	border: 1px solid #ccc;
+}
+
+#home hr.hor-line{
+	max-width: 100px;
+    margin: 20px auto 25px;
+    border-color: rgba(0,0,0,.5);
+    border-width: 2px;
+}
+
+#home p{
+	margin-bottom: 20px;
+}
+
+#home #submit-form h2 {
+	color: #005580;
+	margin-bottom: 20px;
+}
+
+#home #submit-form input{
+	border: 1px solid #ccc;
+	border-radius: 0;
+	padding: 25px 20px;
+	background: #EEE;
+	font-size: 12px;
+	-webkit-appearance: none;
+   	-moz-appearance: none;
+	appearance: none;
+}
+
+#home #submit-form button{
+	border: 1px solid #ccc;
+	border-radius: 0;
+	padding: 10px;
+	background-color: #005580;
+	color: #fff;
+}
+
+#user-lists .table {
+	padding: 10px;
+}
+
+#user-lists .table thead tr td{
+	font-weight: bold;
+}
+
+/* Footer styling */
+footer{
+  	width: 100%;
+  	height: 60px;
+  	background-color: #f8f8f8;
+  	text-align: center;
+  	border-top: 1px solid #E7E7E7;
+  	margin-top: 20px;
+}
+
+footer .container .text-muted{
+	margin: 20px 0;
+}
