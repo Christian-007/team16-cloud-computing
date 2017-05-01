@@ -44,6 +44,8 @@
     <url-pattern>/applications</url-pattern>
   </servlet-mapping>
 
+  <!-- Registration Servlet -->
+
   <servlet>
     <servlet-name>Regist</servlet-name>
     <servlet-class>RegistrationServlet</servlet-class>
@@ -54,6 +56,8 @@
     <url-pattern>/registration</url-pattern>
   </servlet-mapping>
 
+  <!-- Upload Servlet -->
+
   <servlet>
     <servlet-name>Upload</servlet-name>
     <servlet-class>UploadServlet</servlet-class>
@@ -62,6 +66,17 @@
    <servlet-mapping>
     <servlet-name>Upload</servlet-name>
     <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+
+  <!-- Login Servlet -->
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
    <!-- define the default session timeout as 30 min -->

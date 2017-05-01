@@ -46,14 +46,14 @@
 					<li><a href="index.jsp"><i class="fa fa-pencil" aria-hidden="true"></i> REGISTRATION</a></li>
 					<li><a href="users.jsp"><i class="fa fa-user" aria-hidden="true"></i> USERS</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-upload" aria-hidden="true"></i> UPLOAD</a></li>
-					<!-- <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, TheLegend27<span class="caret"></span></a>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, <%= session.getAttribute("currentUser") %><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Settings</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Logout</a></li>
+							<!-- <li><a href="#">Settings</a></li>
+							<li role="separator" class="divider"></li> -->
+							<li><a href="logout.jsp">Logout</a></li>
 						</ul>
-					</li> -->
+					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
