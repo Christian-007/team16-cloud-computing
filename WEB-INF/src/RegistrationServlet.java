@@ -45,15 +45,19 @@ public  class  RegistrationServlet  extends  HttpServlet {
 			int countInserted = stmt.executeUpdate(sqlInsert);
 			System.out.println(countInserted + " records inserted.\n");
 
-			out.println("<html><body>");
-			out.println("Successfully registered!");
-			out.println("</body></html>");
+			HttpSession session = req.getSession(true);	    
+			session.setAttribute("currentUser", email); 
+			res.sendRedirect("index.jsp");
+
+			// out.println("<html><body>");
+			// out.println("Successfully registered!");
+			// out.println("</body></html>");
 	 
 		} catch(SQLException ex) {
 			ex.printStackTrace();
 		}
 
 		// Redirect to a success page.
-		res.sendRedirect("success.jsp");
+		// res.sendRedirect("success.jsp");
 	}
 }
