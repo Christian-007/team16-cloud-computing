@@ -20,13 +20,14 @@
 			<img src="images/tuoslogo_.gif" width="140" height="60" alt="TUOS">
 			<div class="login-div">
 				<form action="login" method="POST" class="login">
+					<label class="control-label hidden">input error</label>
 					<div class="form-group">
 						<input type="email" name="email" class="form-control" id="email" placeholder="Email">
 					</div>
 					<div class="form-group">
 						<input type="password" name="password" class="form-control" id="password" placeholder="Password">
 					</div>
-					<button type="submit" class="btn btn-default">SUBMIT</button>
+					<button type="submit" id="login_btn" class="btn btn-default">LOGIN</button>
 				</form>
 				<h4>- OR -</h4>
 				<button id="signup" class="btn btn-default">SIGN UP</button>

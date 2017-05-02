@@ -8,12 +8,12 @@ public  class  LoginServlet  extends  HttpServlet {
 	public  void  doPost(HttpServletRequest  req, HttpServletResponse  res) throws  ServletException,  IOException {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		res.setContentType("text/html");
-		PrintWriter  out  =   res.getWriter();
-		out.println("<html><body>");
-		out.println("<p>" + email + "</p>");
-		out.println("<p>" + password + "</p>");
-		out.println("</body></html>");
+		// res.setContentType("text/html");
+		// PrintWriter  out  =   res.getWriter();
+		// out.println("<html><body>");
+		// out.println("<p>" + email + "</p>");
+		// out.println("<p>" + password + "</p>");
+		// out.println("</body></html>");
 
 		try {
 			Connection conn = DriverManager.getConnection(
@@ -22,14 +22,21 @@ public  class  LoginServlet  extends  HttpServlet {
 			ResultSet rs;
 			rs = stmt.executeQuery("select * from users where email='" + email + "' and password='" + password + "'");
 			if (rs.next()) {
-			    
-			    //out.println("welcome " + userid);
-			    //out.println("<a href='logout.jsp'>Log out</a>");
+            	// Set session attribute
 			    HttpSession session = req.getSession(true);	    
-				session.setAttribute("currentUser", email); 
-				res.sendRedirect("index.jsp");
+				session.setAttribute("currentUser", email);
+				int userID = rs.getInt("id");
+				session.setAttribute("userID", userID);
+
+				res.getWriter().write("true"); // set validation message for jquery ajax
+				
+				// use this when not using jquery ajax
+				// res.sendRedirect("index.jsp");
 			} else {
-			    out.println("Invalid password <a href='login.jsp'>try again</a>");
+				// Set validation message for jquery ajax
+			    res.getWriter().write("false");
+			    
+			    // out.println("Invalid password <a href='login.jsp'>try again</a>");
 			}
 		} catch(SQLException ex) {
 			ex.printStackTrace();

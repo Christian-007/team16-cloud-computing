@@ -45,6 +45,7 @@ public  class  RegistrationServlet  extends  HttpServlet {
 			int countInserted = stmt.executeUpdate(sqlInsert);
 			System.out.println(countInserted + " records inserted.\n");
 
+			// Redirect user if it's successful and send session attribute to index.jsp
 			HttpSession session = req.getSession(true);	    
 			session.setAttribute("currentUser", email); 
 			res.sendRedirect("index.jsp");

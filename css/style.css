@@ -74,6 +74,12 @@ nav .navbar-collapse {
 	font-size: 12px;
 }
 
+.control-label {
+	color: #a94442;
+	text-shadow: 0px 2px 11px #fff;
+	font-size: 16px;
+}
+
 #login-fields button {
 	width: 400px;
 	border: 1px solid #ccc;
@@ -94,6 +100,20 @@ nav .navbar-collapse {
 	color: #fff;
 }
 
+/* Application styling */
+.thumbnail {
+	/*border: 1px solid #ccc;*/
+    background: #fff;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding-top: 20px;
+    box-shadow: 0 0 0 1px rgba(63,63,68,.05), 0 1px 3px rgba(63,63,68,.1), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.thumbnail p {
+	margin-bottom: 10px;
+}
+
 /* Home Styling */
 #home .white-content {
 	background-color: #fff;
@@ -108,10 +128,10 @@ nav .navbar-collapse {
     border-width: 2px;
 }
 
-#home p{
+/*#home p{
 	margin-bottom: 20px;
 }
-
+*/
 #home #submit-form h2 {
 	color: #005580;
 	margin-bottom: 20px;
@@ -142,6 +162,26 @@ nav .navbar-collapse {
 
 #user-lists .table thead tr td{
 	font-weight: bold;
+}
+
+/* Modal styling*/
+#uploadModal .form-control {
+	border-radius: 0;
+}
+
+#upload_btn {
+	background-color: #ff5252;
+	border-color: #ccc;
+}
+
+.modal-header {
+	background-color: #ff5252;
+	color: #fff;
+}
+
+.modal-header .close {
+	color: #fff;
+	opacity: 1;
 }
 
 /* Footer styling */
