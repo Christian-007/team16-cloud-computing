@@ -156,6 +156,35 @@ nav .navbar-collapse {
 	color: #fff;
 }
 
+/* User styling */
+#user-lists a.edit-personal {
+	font-size: 14px;
+	margin-top: 7px;
+	font-weight: 500;
+}
+
+#user-lists .personal {
+	background-color: #fff;
+	margin: 20px auto;
+	padding: 25px 50px 15px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+#user-lists .labelName {
+	font-weight: 500;
+}
+
+#user-lists p {
+	font-weight: 300;
+}
+
+#user-lists h4 {
+	font-weight: 300;
+	/*color: #ff5252;*/
+	margin-top: 0;
+}
+
 #user-lists .table {
 	padding: 10px;
 }

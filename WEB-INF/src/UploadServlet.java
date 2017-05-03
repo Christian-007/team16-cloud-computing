@@ -37,80 +37,52 @@ public class UploadServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		// Get the submitted form data
 		String app_name = req.getParameter("app_name");
 		String description = req.getParameter("description");
-		String uploaded_file_name=""; String icon_name="";
+		String uploaded_file_name = ""; String icon_name = "";
 		HttpSession session = req.getSession(true);	    
 		Integer userID = (Integer) session.getAttribute("userID");
-
-		// String phone = req.getParameter("phone");
-		// String password = req.getParameter("password");
-
+		
 		res.setContentType("text/html");
 		String fileName = ""; String jarExtension = "";
 		java.io.PrintWriter out = res.getWriter( );
+
  		// Get absolute path of this running web application
 		String appPath = req.getServletContext().getRealPath("");
-		// String appPath = req.getServletContext().getResourceAsStream("");
-		File pathFile = new File(appPath);
+		
 		// Create path to the directory to save uploaded file
 		String savePath = appPath + File.separator + SAVE_DIR;
+		
 		// Create the save directory if it does not exist
-		// File fileSaveDir = new File(savePath);
-		// if (!fileSaveDir.exists())
-		// 	fileSaveDir.mkdir();
+		File fileSaveDir = new File(savePath);
+		if (!fileSaveDir.exists())
+			fileSaveDir.mkdir();
+
 		// out.println("<p>App Name: " + app_name + "</p>");
 		// out.println("<p>Description: " + description + "</p>");
-		for (Part part : req.getParts()) {
-			
-			fileName = extractFileName(part);
-			if(!fileName.isEmpty()){
-				jarExtension = getFileExtension(fileName);
 
-				if(jarExtension.equals("war")) {
+		// Loop through the uploaded files (app file and icon)
+		for (Part part : req.getParts()) {
+			fileName = extractFileName(part); // get the file name
+			
+			if(!fileName.isEmpty()){
+				jarExtension = getFileExtension(fileName); // get the file extension
+
+				if(jarExtension.equals("jar")) {
 					uploaded_file_name = fileName;
-					savePath = pathFile.getParent() + File.separator + fileName;
-					part.write(savePath);		
+					part.write(appPath + File.separator + SAVE_DIR + File.separator + uploaded_file_name); // save app file
 				}else {
 					icon_name = fileName;
-					part.write(appPath + File.separator + "images" + File.separator + fileName);
+					part.write(appPath + File.separator + "images" + File.separator + icon_name); // save app icon
 				}
 			}
 		}
-		savePath = "";
-		jarpath = pathFile.getParent() + File.separator + fileName;
-		destdir = pathFile.getParent();
-
-		try (
-			Connection conn = DriverManager.getConnection(
-               "jdbc:mysql://localhost:3306/platform?useSSL=false", "root", "sunardi");
-			Statement stmt = conn.createStatement();
-		) {
-			// INSERT a record
-			String sqlInsert = "insert into applications (app_name,file_name,description,icon_name,user_id) values ('" + app_name + "', '" + uploaded_file_name + "', '" + description + "', '" + icon_name + "', '" + userID + "')";
-			System.out.println("The SQL query is: " + sqlInsert);  // Echo for debugging
-			int countInserted = stmt.executeUpdate(sqlInsert);
-			System.out.println(countInserted + " records inserted.\n");
-
-			// Redirect user if it's successful and send session attribute to index.jsp
-			res.sendRedirect("index.jsp");
-
-			// out.println("<html><body>");
-			// out.println("Successfully registered!");
-			// out.println("</body></html>");
-	 
-		} catch(SQLException ex) {
-			out.println("<html>");
-			out.println("<head>");
-			out.println("<title>Servlet upload</title>");  
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<p>Error occurred.</p>"); 
-			out.println("</body>");
-			out.println("</html>");
-			ex.printStackTrace();
-		}
-		/* JarFile jarfile = new JarFile(jarpath);
+		
+		jarpath = appPath + File.separator + SAVE_DIR + File.separator + uploaded_file_name; // path to jar file
+		destdir = savePath; // path to extract the selected jar file
+		
+		JarFile jarfile = new JarFile(jarpath);
 		for (Enumeration<JarEntry> iter = jarfile.entries(); iter.hasMoreElements();) {
 			JarEntry entry = iter.nextElement();
 			System.out.println("Processing: " + entry.getName());
@@ -127,7 +99,34 @@ public class UploadServlet extends HttpServlet {
 				instream.close();
 			} // end if
 		} // end for
-		jarfile.close();*/
+		jarfile.close();
+
+		// Insert the uploaded data into database
+		try (
+			Connection conn = DriverManager.getConnection(
+               "jdbc:mysql://localhost:3306/platform?useSSL=false", "root", "sunardi");
+			Statement stmt = conn.createStatement();
+		) {
+			// INSERT a record
+			String sqlInsert = "insert into applications (app_name,file_name,description,icon_name,user_id) values ('" + app_name + "', '" + uploaded_file_name + "', '" + description + "', '" + icon_name + "', '" + userID + "')";
+			System.out.println("The SQL query is: " + sqlInsert);  // Echo for debugging
+			int countInserted = stmt.executeUpdate(sqlInsert);
+			System.out.println(countInserted + " records inserted.\n");
+
+			// Redirect user if it's successful and send session attribute to index.jsp
+			res.sendRedirect("index.jsp");
+	 
+		} catch(SQLException ex) {
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<title>Servlet upload</title>");  
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<p>Error occurred.</p>"); 
+			out.println("</body>");
+			out.println("</html>");
+			ex.printStackTrace();
+		}
 	}
 
 	private String getFileExtension(String fileName){

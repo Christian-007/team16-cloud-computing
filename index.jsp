@@ -52,7 +52,7 @@
 					<td><%=rset.getString("app_name")%></td> 
 					<td><%=rset.getString("description") %></td> 
 					<td>
-						<a target="_blank" href="../<%=app_name.substring(0, app_name.length() - 4)%>">Open</a>
+						<a target="_blank" href="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>">Open</a>
 						<span>/</span>
 						<a href="#">Edit</a>
 					</td> 
