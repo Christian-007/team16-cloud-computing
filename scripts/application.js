@@ -9,6 +9,34 @@ $(function() {
 		$("#login .login-div").slideToggle(300);
 	});
 
+	$("#user-lists button.topup").on('click', function() {
+		var myCredit = $(this).data('amount');
+		$("#topupModal p.currentCredit").text(myCredit);
+	});
+	
+	$("#topupModal button#topup_btn").on('click', function(e) {
+		e.preventDefault();
+		var $btn = $(this).button('loading');
+		$.ajax({
+	        url: "topup",
+	        type:"POST", 
+	        data:{
+	        	topupAmount: $("#topupModal input#topupAmount").val()
+	        },
+	        success: function(data){
+	        	if(data == "true"){
+	        		window.location = 'users.jsp';
+	        	}else if(data == "false") {
+	        		$btn.button('reset');
+	        		alert("You can't put less than 1 Peanut!");
+	        	}else {
+	        		$btn.button('reset');
+	        		alert("Error");
+	        	}
+	        }
+	    });
+	});	
+
 	$("button#login_btn").on('click', function(e) {
 		e.preventDefault();
 		if(!$("form.login label.control-label").hasClass("hidden")){

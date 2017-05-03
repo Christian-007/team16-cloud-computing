@@ -26,7 +26,9 @@ public  class  LoginServlet  extends  HttpServlet {
 			    HttpSession session = req.getSession(true);	    
 				session.setAttribute("currentUser", email);
 				int userID = rs.getInt("id");
+				int myPeanut = rs.getInt("credit");
 				session.setAttribute("userID", userID);
+				session.setAttribute("myPeanut", myPeanut);
 
 				res.getWriter().write("true"); // set validation message for jquery ajax
 				

@@ -21,9 +21,14 @@
 		     	Statement stmt = conn.createStatement();
 		  	) {
 				String strSelect = "select * from users where id='" + userID + "'";
+				String credit = "";
 				ResultSet rset = stmt.executeQuery(strSelect);
 		        while(rset.next()) {   // Move the cursor to the next row
+		        	credit = (String) rset.getString("credit");
 		%>
+		<p class="labelName">My Peanut <span><button data-amount="<%=credit%>" data-toggle="modal" data-target="#topupModal" class="btn btn-default topup">TOP UP</button></span></p>
+		<p><%=credit%></p>
+		<hr>
 		<p class="labelName">Email Address</p>
 		<p><%=rset.getString("email")%></p>
 		<hr>

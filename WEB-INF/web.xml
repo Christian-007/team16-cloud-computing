@@ -78,6 +78,20 @@
     <servlet-name>Login</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+  <!-- Topup Servlet -->
+  <servlet>
+    <servlet-name>Topup</servlet-name>
+    <servlet-class>TopupServlet</servlet-class>
+  </servlet>
+
+  <!-- translate URI requests to specific servlets -->
+   <servlet-mapping>
+     <!-- map any URI ending in ".../submit" to Controller -->
+    <servlet-name>Topup</servlet-name>
+    <url-pattern>/topup</url-pattern>
+
+  </servlet-mapping>
 
    <!-- define the default session timeout as 30 min -->
    <session-config>

@@ -194,6 +194,10 @@ nav .navbar-collapse {
 }
 
 /* Modal styling*/
+#topupModal .modal-header {
+	background-color: #337ab7;
+}
+
 #uploadModal .form-control {
 	border-radius: 0;
 }
@@ -211,6 +215,33 @@ nav .navbar-collapse {
 .modal-header .close {
 	color: #fff;
 	opacity: 1;
+}
+
+/* Alert styling */
+.alert-success {
+	position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    -webkit-transition: top 0.7s;
+	-moz-transition: top 0.7s;
+	-ms-transition: top 0.7s;
+	-o-transition: top 0.7s;
+	transition: top 0.7s;
+}
+
+.alert-success.active {
+	top: 50px;
+	-webkit-transition: top 0.7s;
+	-moz-transition: top 0.7s;
+	-ms-transition: top 0.7s;
+	-o-transition: top 0.7s;
+	transition: top 0.7s;
+}
+
+/* Header styling */
+a.peanut {
+	color: #ff5252 !important;
 }
 
 /* Footer styling */
