@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.sql.*;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
-				maxFileSize=1024*1024*10, // 10MB
+				maxFileSize=1024*1024*30, // 30MB
 				maxRequestSize=1024*1024*50) // 50MB
 
 public class UploadServlet extends HttpServlet {

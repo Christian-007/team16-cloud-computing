@@ -59,6 +59,7 @@
 			</div><!-- /.navbar-collapse -->
 		</div>
 	</nav>
-
+	
+	<jsp:include page="/WEB-INF/views/openAppModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/uploadModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/topupModal.jsp"></jsp:include>

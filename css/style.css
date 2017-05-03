@@ -194,7 +194,7 @@ nav .navbar-collapse {
 }
 
 /* Modal styling*/
-#topupModal .modal-header {
+#topupModal .modal-header, #openAppModal .modal-header {
 	background-color: #337ab7;
 }
 

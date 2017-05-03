@@ -93,6 +93,18 @@
 
   </servlet-mapping>
 
+  <!-- Pay Servlet -->
+  <servlet>
+    <servlet-name>Pay</servlet-name>
+    <servlet-class>PayServlet</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+    <servlet-name>Pay</servlet-name>
+    <url-pattern>/pay</url-pattern>
+
+  </servlet-mapping>
+
    <!-- define the default session timeout as 30 min -->
    <session-config>
      <session-timeout>30</session-timeout>
