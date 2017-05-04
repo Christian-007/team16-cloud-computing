@@ -1,0 +1,119 @@
+/*#popView{*/
+    /*!*左侧弹出窗口的长宽、圆角、背景颜色*!*/
+    /*height: 400px;*/
+    /*width: 400px;*/
+    /*border-radius: 10px;*/
+    /*background-color: #7AC5CD;*/
+
+
+    /*!*布局排版*!*/
+    /*position:absolute;*/
+    /*z-index:2;*/
+    /*left:-390px;*/
+
+    /*!*字体设置*!*/
+    /*text-align: center;*/
+    /*color: #FFFFFF;*/
+/*}*/
+
+#popView .row p{margin:0 auto;width:200px;}
+#popView nav {
+    /*margin: 80px auto;*/
+    /*text-align: center;*/
+}
+#popView .row ul.song-list {
+    /*display: none !important;*/
+}
+
+#popView .row .list-link:hover + ul.song-list {
+    /*display: inline-block !important;*/
+}
+
+#popView .row ul:after {
+    content: ""; clear: both !important; display: block !important;
+}
+
+#popView .row ul li {
+    float: left !important;
+}
+#popView .row ul li:hover {
+    background: #efefef !important;
+    background: linear-gradient(top, #efefef 0%, #bbbbbb 40%) !important;
+    background: -moz-linear-gradient(top, #efefef 0%, #bbbbbb 40%) !important;
+    background: -webkit-linear-gradient(top, #efefef 0%,#bbbbbb 40%) !important;
+}
+#popView .row ul li:hover a {
+    color: #fff !important;
+}
+
+#popView .row ul li a {
+    display: block;
+    padding: 10px 12px;
+    color: #4b545f;
+    text-decoration: none;
+}
+
+
+#popView .row ul ul {
+    background: #efefef; border-radius: 0px; padding: 0;
+    position: absolute;
+    top: 100%;
+}
+#popView .row ul ul li {
+    float: none;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    position: relative;
+}
+#popView .row ul ul li a {
+    padding: 5px 2px;
+    color: #fff;
+}
+#popView .row ul ul li a:hover {
+    background: #efefef;
+}
+
+#popView .row ul ul ul {
+    position: absolute;
+    left: 100%;
+    top:0;
+}
+#popView a {
+    position: relative;
+}
+#popView .midddddd {
+    text-align: center;
+}
+/*.player{*/
+/*position: absolute;*/
+/*top:-100px;*/
+/*left:0px;*/
+/*width:100%;*/
+/*-webkit-transition: top 0.7s;*/
+/*-moz-transition: top 0.7s;*/
+/*-ms-transition: top 0.7s;*/
+/*-o-transition: top 0.7s;*/
+/*}*/
+/*.player.active{*/
+/*top:50px;*/
+/*-webkit-transition: top 0.7s;*/
+/*-moz-transition: top 0.7s;*/
+/*-ms-transition: top 0.7s;*/
+/*-o-transition: top 0.7s;*/
+/*transition: top 0.7s;*/
+/*}*/
+/*div*/
+/*{*/
+/*width:100px;*/
+/*height:100px;*/
+/*background:blue;*/
+/*transition:width 2s;*/
+/*-moz-transition:width 2s; !* Firefox 4 *!*/
+/*-webkit-transition:width 2s; !* Safari and Chrome *!*/
+/*-o-transition:width 2s; !* Opera *!*/
+/*}*/
+
+/*div:hover*/
+/*{*/
+/*width:300px;*/
+/*}*/

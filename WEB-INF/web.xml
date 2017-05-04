@@ -128,6 +128,18 @@
     <url-pattern>/changePassword</url-pattern>
 
   </servlet-mapping>
+  
+  <!-- Password Servlet -->
+  <servlet>
+    <servlet-name>DeleteApp</servlet-name>
+    <servlet-class>DeleteAppServlet</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+    <servlet-name>DeleteApp</servlet-name>
+    <url-pattern>/deleteApp</url-pattern>
+
+  </servlet-mapping>
 
    <!-- define the default session timeout as 30 min -->
    <session-config>

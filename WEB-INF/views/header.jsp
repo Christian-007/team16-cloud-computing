@@ -22,6 +22,7 @@
 
 	<!-- Style CSS -->
 	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/playerCss.css" />
 
   </head>
   <body>
@@ -64,6 +65,7 @@
 		</div>
 	</nav>
 	
+	<jsp:include page="/WEB-INF/views/deleteAppModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/openAppModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/passwordModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/editDetailsModal.jsp"></jsp:include>

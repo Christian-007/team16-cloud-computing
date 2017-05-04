@@ -9,6 +9,22 @@
 
 <div id="home" class="container">
 	<!-- <a href="../MapsFinder">Link</a> -->
+	<div class="row">
+		<div class="col-sm-6 col-xs-12">
+			<h2>Music Player</h2>
+			<hr>		
+			<div class="container">
+				<jsp:include page="/musicplayer.jsp"></jsp:include>
+			</div>
+		</div>
+		<div class="col-sm-6 col-xs-12">
+			<h2>Comment Posting</h2>
+			<hr>		
+			
+		</div>
+	</div>
+	
+
 	<h2>Applications</h2>
 	<hr>
 	<div class="table-responsive"> 
@@ -56,6 +72,15 @@
 					<td>
 						<!-- <a target="_blank" href="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>">Open</a> -->
 						 <a class="open-app" data-appuserid="<%=appUserID%>" data-link="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>" href="#" data-toggle="modal" data-target="#openAppModal">Open</a> 
+						 <%
+						 	if(session.getAttribute("userID") != null) 
+						 		if(session.getAttribute("userID").equals(appUserID)){
+						 %>
+						 <span> / </span>
+						 <a class="delete-app" data-appuserid="<%=appUserID%>" href="#" data-toggle="modal" data-target="#deleteAppModal">Delete</a> 
+						 <%
+						 }
+						 %>
 					</td> 
 				</tr> 
 				<%
@@ -66,16 +91,6 @@
 				    	ex.printStackTrace();
 				  	}
 				%>
-				<!-- <tr> 
-					<td><i class="fa fa-steam fa-2x" aria-hidden="true"></i></td>
-					<td>Steam</td> 
-					<td>This app allows user to steami-fy any devices that have steam capability.</td> 
-					<td>
-						<a href="#">Open</a>
-						<span>/</span>
-						<a href="#">Edit</a>
-					</td> 
-				</tr>  -->
 			</tbody> 
 		</table> 
 	</div>
@@ -108,37 +123,6 @@
 				<a href="#">Edit</a>
 			</div>
 		</div>
-	</div> -->
-	<!-- <div class="text-center">
-		<h2>REGISTRATION</h2>
-		<hr class="hor-line">
-		<p>
-			This is a registration form to create a user account for accessing the platform.
-		</p>
-		<form action="registration" method="POST" id="submit-form"> 
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<input type="text" name="fname" class="form-control" id="firstname" placeholder="First Name">
-					</div>	
-				</div>
-				<div class="col-sm-6">
-					<div class="form-group">
-						<input type="text" name="lname" class="form-control" id="lastname" placeholder="Last Name">
-					</div>	
-				</div>
-			</div>
-			<div class="form-group">
-				<input type="email" name="email" class="form-control" id="email" placeholder="Sheffield Email Address">
-			</div>
-			<div class="form-group">
-				<input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number">
-			</div>
-			<div class="form-group">
-				<input type="password" name="password" class="form-control" id="password" placeholder="Password">
-			</div>
-			<button type="submit" class="btn btn-default">CREATE ACCOUNT</button> 
-		</form>
 	</div> -->
 </div>
 

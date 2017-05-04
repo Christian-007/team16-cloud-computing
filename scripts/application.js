@@ -33,13 +33,6 @@ $(function() {
 
 	// variable to store link for app
 	var linkToApp;
-	var selectedAppID;
-
-	$("a.open-app").on('click', function(e) {
-		linkToApp = $(this).data('link');
-		selectedAppID = $(this).data('appuserid');
-		console.log(linkToApp);
-	});
 
 	// Form submission for Changing Passowrd
 	$("#passwordModal button#password_btn").on('click', function(e) {
@@ -101,6 +94,50 @@ $(function() {
 	        }
 	    });
 	});	
+
+	var selectedAppIDDelete;
+	$("a.delete-app").on('click', function(e) {
+		selectedAppIDDelete = $(this).data('appuserid');
+		console.log(selectedAppIDDelete);
+	});
+
+	// Form submission for Deleting Applications
+	$("#deleteAppModal button#deleteapp_btn").on('click', function(e) {
+		e.preventDefault();
+		var $btn = $(this).button('loading');
+
+		$.ajax({
+	        url: "deleteApp",
+	        type:"POST", 
+	        data:{
+	        	appUserID: selectedAppIDDelete
+	        },
+	        success: function(data){
+	        	// alert(data);
+	        	if(data == "true"){
+	        		alert("Successfully delete your application.");
+	        		window.location = 'index.jsp';
+	        	}else if(data == "false") {
+	        		$btn.button('reset');
+	        		alert("Something wrong :(");
+	        	}else if(data == "exception") {
+	        		$btn.button('reset');
+	        		alert("Exception occurred.");
+	        	}
+	        	else {
+	        		$btn.button('reset');
+	        		alert("Error");
+	        	}
+	        }
+	    });
+	});	
+
+	var selectedAppID;
+	$("a.open-app").on('click', function(e) {
+		linkToApp = $(this).data('link');
+		selectedAppID = $(this).data('appuserid');
+		console.log(linkToApp);
+	});
 	
 	// Form submission for Opening Applications
 	$("#openAppModal button#openapp_btn").on('click', function(e) {
