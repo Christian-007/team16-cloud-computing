@@ -39,6 +39,7 @@
 				     	Statement stmt = conn.createStatement();
 				  	) {
 						String strSelect = "select * from applications";
+						int appUserID = 0;
 						String app_name = "";
 						String icon = "";
 				        //out.println("The SQL query is: " + strSelect);  // Echo For debugging
@@ -46,6 +47,7 @@
 				        while(rset.next()) {   // Move the cursor to the next row
 				        app_name = (String) rset.getString("file_name");
 				        icon = (String) rset.getString("icon_name");
+				        appUserID = rset.getInt("user_id");
 				%>
 				<tr> 
 					<td><img src="images/<%=icon %>" alt="" class="img-responsive"></td>
@@ -53,9 +55,7 @@
 					<td><%=rset.getString("description") %></td> 
 					<td>
 						<!-- <a target="_blank" href="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>">Open</a> -->
-						 <a class="open-app" data-link="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>" href="#" data-toggle="modal" data-target="#openAppModal">Open</a> 
-						<span>/</span>
-						<a href="#">Edit</a>
+						 <a class="open-app" data-appuserid="<%=appUserID%>" data-link="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>" href="#" data-toggle="modal" data-target="#openAppModal">Open</a> 
 					</td> 
 				</tr> 
 				<%

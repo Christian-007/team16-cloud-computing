@@ -1,15 +1,25 @@
 <%@page import = "java.sql.*" %>
 <%@page import = "javax.sql.*" %>
+<%
+	if (session.getAttribute("currentUser") == null) {
+    	response.sendRedirect("logout.jsp");
+	}
+
+%>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <div id="user-lists" class="container">
 	<div class="personal">
 		<h4>
 			<i class="fa fa-user" aria-hidden="true"></i> Personal Details
-			<a href="#" class="edit-personal pull-right">Edit</a>
+			<a href="#" class="edit-personal pull-right" data-toggle="modal" data-target="#editDetailsModal">Edit</a>
 		</h4>
 		<hr>
 		<%
-			int userID = (Integer) session.getAttribute("userID");
+			int userID = 0;
+
+			if (session.getAttribute("userID") != null) {
+				userID = (Integer) session.getAttribute("userID");
+			}
 
 			try (
 		     // Step 1: Allocate a database 'Connection' object
@@ -27,19 +37,19 @@
 		        	credit = (String) rset.getString("credit");
 		%>
 		<p class="labelName">My Peanut <span><button data-amount="<%=credit%>" data-toggle="modal" data-target="#topupModal" class="btn btn-default topup">TOP UP</button></span></p>
-		<p><%=credit%></p>
+		<p class="credit-text"><%=credit%></p>
 		<hr>
 		<p class="labelName">Email Address</p>
-		<p><%=rset.getString("email")%></p>
+		<p class="user-email"><%=rset.getString("email")%></p>
 		<hr>
 		<p class="labelName">Name</p>
-		<p><%=rset.getString("fname") + " " + rset.getString("lname")%></p>
+		<p class="fullName" data-fname="<%=rset.getString("fname")%>" data-lname="<%=rset.getString("lname")%>"><%=rset.getString("fname") + " " + rset.getString("lname")%></p>
 		<hr>
 		<p class="labelName">Phone Number</p>
-		<p><%=rset.getString("phone")%></p>
+		<p class="user-phone"><%=rset.getString("phone")%></p>
 		<hr>
 		<p class="labelName">Password</p>
-		<button class="btn btn-default">Change Password</button>
+		<button data-toggle="modal" data-target="#passwordModal" class="btn btn-default">Change Password</button>
 		<hr>
 		<%
 		        	// out.println(rset.getString("app_name"));

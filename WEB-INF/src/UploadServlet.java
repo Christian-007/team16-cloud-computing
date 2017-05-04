@@ -59,9 +59,6 @@ public class UploadServlet extends HttpServlet {
 		if (!fileSaveDir.exists())
 			fileSaveDir.mkdir();
 
-		// out.println("<p>App Name: " + app_name + "</p>");
-		// out.println("<p>Description: " + description + "</p>");
-
 		// Loop through the uploaded files (app file and icon)
 		for (Part part : req.getParts()) {
 			fileName = extractFileName(part); // get the file name
@@ -129,6 +126,8 @@ public class UploadServlet extends HttpServlet {
 		}
 	}
 
+
+	// Get file extension from the last 3 letters of the file name
 	private String getFileExtension(String fileName){
 		if (fileName.length() == 3) {
 			return fileName;

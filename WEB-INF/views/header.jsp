@@ -43,8 +43,12 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="peanut" href="users.jsp">My Peanut: <%= session.getAttribute("myPeanut") %></a></li>
-					<li><a href="index.jsp"><i class="fa fa-th-large" aria-hidden="true"></i> APPLICATIONS</a></li>
+					<li>
+						<a class="peanut" href="users.jsp">
+							<strong>My Peanut: <%= session.getAttribute("myPeanut") %></strong>
+						</a>
+					</li>
+					<li><a href="index.jsp"><i class="fa fa-tachometer" aria-hidden="true"></i> DASHBOARD</a></li>
 					<!-- <li><a href="users.jsp"><i class="fa fa-user" aria-hidden="true"></i> USERS</a></li> -->
 					<li><a href="#" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-upload" aria-hidden="true"></i> UPLOAD</a></li>
 					<li class="dropdown">
@@ -61,5 +65,7 @@
 	</nav>
 	
 	<jsp:include page="/WEB-INF/views/openAppModal.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/passwordModal.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/editDetailsModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/uploadModal.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/views/topupModal.jsp"></jsp:include>

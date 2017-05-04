@@ -38,23 +38,23 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="form-group">
-									<input type="text" name="fname" class="form-control" id="firstname" placeholder="First Name">
+									<input type="text" name="fname" class="form-control" id="firstname" placeholder="First Name" required>
 								</div>	
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
-									<input type="text" name="lname" class="form-control" id="lastname" placeholder="Last Name">
+									<input type="text" name="lname" class="form-control" id="lastname" placeholder="Last Name" required>
 								</div>	
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="email" name="email" class="form-control" id="email" placeholder="Sheffield Email Address">
+							<input type="email" name="email" class="form-control" id="email" placeholder="Sheffield Email Address" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number">
+							<input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number" required>
 						</div>
 						<div class="form-group">
-							<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+							<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
 						</div>
 						<button type="submit" class="btn btn-default">CREATE ACCOUNT</button> 
 					</form>

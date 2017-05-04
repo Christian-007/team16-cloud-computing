@@ -93,6 +93,18 @@
 
   </servlet-mapping>
 
+   <!-- Edit User Servlet -->
+  <servlet>
+    <servlet-name>EditUser</servlet-name>
+    <servlet-class>EditUserServlet</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+    <servlet-name>EditUser</servlet-name>
+    <url-pattern>/editDetails</url-pattern>
+
+  </servlet-mapping>
+
   <!-- Pay Servlet -->
   <servlet>
     <servlet-name>Pay</servlet-name>
@@ -102,6 +114,18 @@
    <servlet-mapping>
     <servlet-name>Pay</servlet-name>
     <url-pattern>/pay</url-pattern>
+
+  </servlet-mapping>
+
+  <!-- Password Servlet -->
+  <servlet>
+    <servlet-name>ChangePassword</servlet-name>
+    <servlet-class>ChangePasswordServlet</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+    <servlet-name>ChangePassword</servlet-name>
+    <url-pattern>/changePassword</url-pattern>
 
   </servlet-mapping>
 

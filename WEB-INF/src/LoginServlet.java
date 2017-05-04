@@ -23,10 +23,10 @@ public  class  LoginServlet  extends  HttpServlet {
 			rs = stmt.executeQuery("select * from users where email='" + email + "' and password='" + password + "'");
 			if (rs.next()) {
             	// Set session attribute
-			    HttpSession session = req.getSession(true);	    
+			    HttpSession session = req.getSession(true);
+			    int userID = rs.getInt("id");
+				int myPeanut = rs.getInt("credit");	    
 				session.setAttribute("currentUser", email);
-				int userID = rs.getInt("id");
-				int myPeanut = rs.getInt("credit");
 				session.setAttribute("userID", userID);
 				session.setAttribute("myPeanut", myPeanut);
 

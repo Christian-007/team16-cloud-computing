@@ -19,7 +19,7 @@
           </div>
           <div class="row">
             <div class="col-sm-4">
-              <b><p>File Upload: </p></b>
+              <b><p>Jar File Upload: </p></b>
             </div>
             <div class="col-sm-8">
               <div class="form-group">

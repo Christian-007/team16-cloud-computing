@@ -32,6 +32,7 @@ public  class  RegistrationServlet  extends  HttpServlet {
 		String email = req.getParameter("email");
 		String phone = req.getParameter("phone");
 		String password = req.getParameter("password");
+		int defaultPeanut = 1000; // Give a reward of 1000 Peanuts for signing up
 		res.setContentType("text/html");
 		PrintWriter  out  =   res.getWriter();
 		try (
@@ -40,19 +41,33 @@ public  class  RegistrationServlet  extends  HttpServlet {
 			Statement stmt = conn.createStatement();
 		) {
 			// INSERT a record
-			String sqlInsert = "insert into users (fname,lname,email,phone,password) values ('" + fname + "', '" + lname + "', '" + email + "', '" + phone + "', '" + password + "')";
+			String sqlInsert = "insert into users (fname,lname,email,phone,password, credit) values ('" + fname + "', '" + lname + "', '" + email + "', '" + phone + "', '" + password  + "', '" + defaultPeanut + "')";
 			System.out.println("The SQL query is: " + sqlInsert);  // Echo for debugging
 			int countInserted = stmt.executeUpdate(sqlInsert);
 			System.out.println(countInserted + " records inserted.\n");
 
-			// Redirect user if it's successful and send session attribute to index.jsp
-			HttpSession session = req.getSession(true);	    
-			session.setAttribute("currentUser", email); 
-			res.sendRedirect("index.jsp");
+			// SELECT the inserted record to get the ID
+			ResultSet rs;
+			rs = stmt.executeQuery("select * from users where email='" + email + "' and password='" + password + "'");
+			if (rs.next()) {
+            	// Set session attribute
+			    int userID = rs.getInt("id");
+				HttpSession session = req.getSession(true);	    
+				session.setAttribute("currentUser", email);
+				session.setAttribute("userID", userID);
+				session.setAttribute("myPeanut", defaultPeanut);
+				res.sendRedirect("index.jsp");
 
-			// out.println("<html><body>");
-			// out.println("Successfully registered!");
-			// out.println("</body></html>");
+				res.getWriter().write("true"); // set validation message for jquery ajax
+				// Redirect user if it's successful and send session attribute to index.jsp
+				
+				
+				// use this when not using jquery ajax
+				// res.sendRedirect("index.jsp");
+			} else {
+				// Set validation message for jquery ajax
+			    res.getWriter().write("false");
+			}
 	 
 		} catch(SQLException ex) {
 			ex.printStackTrace();
