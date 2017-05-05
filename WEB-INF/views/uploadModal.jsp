@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">UPLOAD APPLICATION</h4>
       </div>
-      <form action="upload" method="POST" enctype="multipart/form-data"> 
+      <form id="uploadForm" action="upload" method="POST" enctype="multipart/form-data"> 
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">

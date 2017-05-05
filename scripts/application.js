@@ -31,6 +31,42 @@ $(function() {
 		$("#editDetailsModal #phone").val(phone);
 	});
 
+	// Form submission for Changing Passowrd
+	$("#uploadModal button#upload_btn").on('click', function(e) {
+		e.preventDefault();
+		var imgExtension = ['gif', 'png', 'jpeg', 'jpg'];
+		var app_name = $("#uploadModal input#app_name").val();
+		var description = $("#uploadModal textarea#description").val();
+		var upload = $("#uploadModal input#upload").val().split('.').pop().toLowerCase();
+		var icon = $("#uploadModal input#icon").val().split('.').pop().toLowerCase();
+		var isImg = false; var isJar = false; var isEmpty = false;
+
+		if(app_name !== "" && upload !== "" && description !== "" && icon !== ""){
+			if(upload === 'jar'){
+				isJar = true;
+			}
+			for(var i=0; i<imgExtension.length; i++){
+				if(icon === imgExtension[i]){
+					isImg = true;
+				}
+			}
+		}else {
+			alert("Please fill up all of the fields.");
+			isEmpty = true;
+		}
+
+		if(isJar && isImg){
+			var $btn = $(this).button('loading');
+			$('#uploadModal form#uploadForm').submit();	
+			alert("Successfully upload your app!");
+			isJar = false; isImg = false; isEmpty = false;
+		}else if(!isEmpty){
+			if(!isJar) alert("Please upload .jar file.");
+			if(!isImg) alert("Please upload gif, png, jpeg, or jpg app icon file.");
+		}
+		
+	});	
+
 	// variable to store link for app
 	var linkToApp;
 

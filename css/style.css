@@ -199,7 +199,7 @@ nav .navbar-collapse {
 }
 
 /* Modal styling*/
-#topupModal .modal-header, #openAppModal .modal-header, #editDetailsModal .modal-header, #passwordModal .modal-header {
+#topupModal .modal-header, #openAppModal .modal-header, #editDetailsModal .modal-header, #passwordModal .modal-header, #deleteAppModal .modal-header {
 	background-color: #337ab7;
 }
 
