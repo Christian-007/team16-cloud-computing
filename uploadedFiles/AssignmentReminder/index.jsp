@@ -23,7 +23,7 @@
       <h2>Assignment Reminder</h2>
       <hr>
     	
-      <form action="schedule" method="post">
+      <form action="../../schedule" method="post">
       <p><strong>Assignment:</strong> <input type="text" name="title" size="35"></p>
       <strong>Deadline: </strong>
       <SELECT name="day">

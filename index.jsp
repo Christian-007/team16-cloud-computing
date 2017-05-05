@@ -1,27 +1,10 @@
 <%@page import = "java.sql.*" %>
 <%@page import = "javax.sql.*" %>
 <%
-	Cookie[] cks = request.getCookies();
-	if(cks!=null){
-		for(int i=0; i<cks.length; i++){
-			String name = cks[i].getName();
-			String value = cks[i].getValue();
-			if(name.equals("userEmail")){
-				break;
-			}
-			if(i == (cks.length-1)){
-				response.sendRedirect("logout.jsp");
-			}
-			i++;
-		}
-	}else {
-		response.sendRedirect("logout.jsp");
-		return;
+	if (session.getAttribute("currentUser") == null) {
+    	response.sendRedirect("logout.jsp");
 	}
-	
-	// if (session.getAttribute("currentUser") == null) {
- //    	response.sendRedirect("logout.jsp");
-	// }
+
 %>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
@@ -38,7 +21,38 @@
 		<div class="col-sm-6 col-xs-12">
 			<h2>Comment Posting</h2>
 			<hr>		
-			
+			<div class="well">
+				<%
+					
+					if(session.getAttribute("userID") != null){
+					}
+					try (
+				     // Step 1: Allocate a database 'Connection' object
+				     java.sql.Connection conn = DriverManager.getConnection(
+				           "jdbc:mysql://localhost:3306/platform?useSSL=false", "root", "sunardi");
+
+				     	Statement stmt = conn.createStatement();
+				  	) {
+						String strSelect = "select * from comments";
+				        ResultSet rset = stmt.executeQuery(strSelect);
+				        while(rset.next()) {
+					%>
+					<span class="owner"><%=rset.getString("owner")%>: </span><p class="chat-bubble"><%=rset.getString("message")%></p>
+					<%
+						} 
+				  }
+				%>
+			</div>
+			<div class="row">
+				<form action="sendComment" method="post">
+					<div class="col-sm-10 col-xs-12">
+						<input name="chat" type="text" class="form-control" id="chat" placeholder="Say a Word" required>
+					</div>
+					<div class="col-sm-2 col-xs-12">
+						<button type="submit" data-userid='<%=session.getAttribute("userID") %>' id="submit_chat" class="btn btn-default">Send</button> 
+					</div>
+				</form>	
+			</div>
 		</div>
 	</div>
 	
@@ -112,36 +126,7 @@
 			</tbody> 
 		</table> 
 	</div>
-	<!-- <div class="row text-center">
-		<div class="col-sm-3 col-xs-12">
-			<div class="thumbnail">
-				<i class="fa fa-cloud fa-3x" aria-hidden="true"></i>
-				<p>Cloud Platform</p>
-				<a href="#">Edit</a>
-			</div>
-		</div>
-		<div class="col-sm-3 col-xs-12">
-			<div class="thumbnail">
-				<i class="fa fa-steam fa-3x" aria-hidden="true"></i>
-				<p>Steam</p>
-				<a href="#">Edit</a>
-			</div>
-		</div>
-		<div class="col-sm-3 col-xs-12">
-			<div class="thumbnail">
-				<i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
-				<p>Facebook</p>
-				<a href="#">Edit</a>
-			</div>
-		</div>
-		<div class="col-sm-3 col-xs-12">
-			<div class="thumbnail">
-				<i class="fa fa-apple fa-3x" aria-hidden="true"></i>
-				<p>Apple</p>
-				<a href="#">Edit</a>
-			</div>
-		</div>
-	</div> -->
+	
 </div>
 
 <jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
