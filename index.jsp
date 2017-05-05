@@ -1,9 +1,27 @@
 <%@page import = "java.sql.*" %>
 <%@page import = "javax.sql.*" %>
 <%
-	if (session.getAttribute("currentUser") == null) {
-    	response.sendRedirect("logout.jsp");
+	Cookie[] cks = request.getCookies();
+	if(cks!=null){
+		for(int i=0; i<cks.length; i++){
+			String name = cks[i].getName();
+			String value = cks[i].getValue();
+			if(name.equals("userEmail")){
+				break;
+			}
+			if(i == (cks.length-1)){
+				response.sendRedirect("logout.jsp");
+			}
+			i++;
+		}
+	}else {
+		response.sendRedirect("logout.jsp");
+		return;
 	}
+	
+	// if (session.getAttribute("currentUser") == null) {
+ //    	response.sendRedirect("logout.jsp");
+	// }
 %>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 

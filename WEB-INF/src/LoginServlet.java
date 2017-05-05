@@ -14,7 +14,8 @@ public  class  LoginServlet  extends  HttpServlet {
 		// out.println("<p>" + email + "</p>");
 		// out.println("<p>" + password + "</p>");
 		// out.println("</body></html>");
-
+		Cookie ck = new Cookie("userEmail", email);
+		ck.setMaxAge(3000);
 		try {
 			Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/platform?useSSL=false", "root", "sunardi");
@@ -31,6 +32,7 @@ public  class  LoginServlet  extends  HttpServlet {
 				session.setAttribute("myPeanut", myPeanut);
 
 				res.getWriter().write("true"); // set validation message for jquery ajax
+				res.addCookie(ck);
 				
 				// use this when not using jquery ajax
 				// res.sendRedirect("index.jsp");

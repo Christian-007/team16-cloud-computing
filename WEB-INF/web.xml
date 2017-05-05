@@ -141,6 +141,17 @@
 
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>Schedule</servlet-name>
+    <servlet-class>ScheduleServlet</servlet-class>
+  </servlet>
+
+   <servlet-mapping>
+    <servlet-name>Schedule</servlet-name>
+    <url-pattern>/schedule</url-pattern>
+
+  </servlet-mapping>
+
    <!-- define the default session timeout as 30 min -->
    <session-config>
      <session-timeout>30</session-timeout>
