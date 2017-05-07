@@ -1,8 +1,9 @@
 <%
 	session.setAttribute("currentUser", null);
 	session.invalidate();
-	Cookie ck = new Cookie("userEmail", "email");
-	ck.setMaxAge(0);
-	response.addCookie(ck);
+	Cookie killMyCookie = new Cookie("userLogin", null);
+	killMyCookie.setMaxAge(0);
+	killMyCookie.setPath("/");
+    response.addCookie(killMyCookie);
 	response.sendRedirect("login.jsp");
 %>

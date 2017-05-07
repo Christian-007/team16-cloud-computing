@@ -50,14 +50,17 @@ public class UploadServlet extends HttpServlet {
 
  		// Get absolute path of this running web application
 		String appPath = req.getServletContext().getRealPath("");
-		
-		// Create path to the directory to save uploaded file
-		String savePath = appPath + File.separator + SAVE_DIR;
+
+		File pathFile = new File(appPath);
+
+ 		// Create path to the directory to save uploaded file
+ 		String savePath = appPath + File.separator + SAVE_DIR;
+		// String savePath = appPath + File.separator + SAVE_DIR;
 		
 		// Create the save directory if it does not exist
-		File fileSaveDir = new File(savePath);
-		if (!fileSaveDir.exists())
-			fileSaveDir.mkdir();
+		// File fileSaveDir = new File(savePath);
+		// if (!fileSaveDir.exists())
+		// 	fileSaveDir.mkdir();
 
 		// Loop through the uploaded files (app file and icon)
 		for (Part part : req.getParts()) {
@@ -68,16 +71,20 @@ public class UploadServlet extends HttpServlet {
 
 				if(jarExtension.equals("jar")) {
 					uploaded_file_name = fileName;
-					part.write(appPath + File.separator + SAVE_DIR + File.separator + uploaded_file_name); // save app file
+					savePath = pathFile.getParent() + File.separator + fileName; // save file to /webapps
+					part.write(savePath);
+					// part.write(appPath + File.separator + SAVE_DIR + File.separator + uploaded_file_name); // save app file
 				}else {
 					icon_name = fileName;
 					part.write(appPath + File.separator + "images" + File.separator + icon_name); // save app icon
 				}
 			}
 		}
-		
-		jarpath = appPath + File.separator + SAVE_DIR + File.separator + uploaded_file_name; // path to jar file
-		destdir = savePath; // path to extract the selected jar file
+		savePath = "";
+		jarpath = pathFile.getParent() + File.separator + uploaded_file_name;
+		destdir = pathFile.getParent();
+		// jarpath = appPath + File.separator + SAVE_DIR + File.separator + uploaded_file_name; // path to jar file
+		// destdir = savePath; // path to extract the selected jar file
 		
 		JarFile jarfile = new JarFile(jarpath);
 		for (Enumeration<JarEntry> iter = jarfile.entries(); iter.hasMoreElements();) {

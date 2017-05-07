@@ -14,8 +14,10 @@ public  class  LoginServlet  extends  HttpServlet {
 		// out.println("<p>" + email + "</p>");
 		// out.println("<p>" + password + "</p>");
 		// out.println("</body></html>");
-		Cookie ck = new Cookie("userEmail", email);
+		Cookie ck = new Cookie("userLogin", "loggedin");
+ 		ck.setPath("/");
 		ck.setMaxAge(3000);
+		
 		try {
 			Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/platform?useSSL=false", "root", "sunardi");

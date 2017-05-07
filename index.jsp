@@ -4,7 +4,6 @@
 	if (session.getAttribute("currentUser") == null) {
     	response.sendRedirect("logout.jsp");
 	}
-
 %>
 <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 
@@ -102,8 +101,8 @@
 					<td><%=rset.getString("app_name")%></td> 
 					<td><%=rset.getString("description") %></td> 
 					<td>
-						<!-- <a target="_blank" href="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>">Open</a> -->
-						 <a class="open-app" data-appuserid="<%=appUserID%>" data-link="uploadedFiles/<%=app_name.substring(0, app_name.length() - 4)%>" href="#" data-toggle="modal" data-target="#openAppModal">Open</a> 
+						<!-- <a target="_blank" href="../<%=app_name.substring(0, app_name.length() - 4)%>">Open</a> -->
+						 <a class="open-app" data-appuserid="<%=appUserID%>" data-link="../<%=app_name.substring(0, app_name.length() - 4)%>" href="#" data-toggle="modal" data-target="#openAppModal">Open</a> 
 						 <%
 						 	if(session.getAttribute("userID") != null) 
 						 		if(session.getAttribute("userID").equals(appUserID)){
